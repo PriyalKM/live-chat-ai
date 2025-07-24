@@ -1,0 +1,233 @@
+.bs-container,
+.bs-container-fluid,
+.bs-container-4xl
+.bs-container-3xl,
+.bs-container-2xl,
+.bs-container-xl,
+.bs-container-lg,
+.bs-container-md,
+.bs-container-sm {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .bs-container-sm,
+  .bs-container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .bs-container-md,
+  .bs-container-sm,
+  .bs-container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .bs-container-lg,
+  .bs-container-md,
+  .bs-container-sm,
+  .bs-container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .bs-container-xl,
+  .bs-container-lg,
+  .bs-container-md,
+  .bs-container-sm,
+  .bs-container {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 1400px) {
+  .bs-container-2xl,
+  .bs-container-xl,
+  .bs-container-lg,
+  .bs-container-md,
+  .bs-container-sm,
+  .bs-container {
+    max-width: 1320px;
+  }
+}
+@media (min-width: 1600px) {
+  .bs-container-3xl,
+  .bs-container-2xl,
+  .bs-container-xl,
+  .bs-container-lg,
+  .bs-container-md,
+  .bs-container-sm,
+  .bs-container {
+    max-width: 1420px;
+  }
+}
+@media (min-width: 1800px) {
+  .bs-container-4xl,
+  .bs-container-3xl,
+  .bs-container-2xl,
+  .bs-container-xl,
+  .bs-container-lg,
+  .bs-container-md,
+  .bs-container-sm,
+  .bs-container {
+    max-width: 1600px;
+  }
+}
+
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row>* {
+  box-sizing: border-box;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+.col {
+  flex: 1 0 0%;
+}
+
+.col-auto {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+.col-1 {
+  flex: 0 0 auto;
+  width: 8.33333333%;
+}
+
+.col-2 {
+  flex: 0 0 auto;
+  width: 16.66666667%;
+}
+
+.col-3 {
+  flex: 0 0 auto;
+  width: 25%;
+}
+
+.col-4 {
+  flex: 0 0 auto;
+  width: 33.33333333%;
+}
+
+.col-5 {
+  flex: 0 0 auto;
+  width: 41.66666667%;
+}
+
+.col-6 {
+  flex: 0 0 auto;
+  width: 50%;
+}
+
+.col-7 {
+  flex: 0 0 auto;
+  width: 58.33333333%;
+}
+
+.col-8 {
+  flex: 0 0 auto;
+  width: 66.66666667%;
+}
+
+.col-9 {
+  flex: 0 0 auto;
+  width: 75%;
+}
+
+.col-10 {
+  flex: 0 0 auto;
+  width: 83.33333333%;
+}
+
+.col-11 {
+  flex: 0 0 auto;
+  width: 91.66666667%;
+}
+
+.col-12 {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+.offset-1 {
+  margin-left: 8.33333333%;
+}
+
+.offset-2 {
+  margin-left: 16.66666667%;
+}
+
+.offset-3 {
+  margin-left: 25%;
+}
+
+.offset-4 {
+  margin-left: 33.33333333%;
+}
+
+.offset-5 {
+  margin-left: 41.66666667%;
+}
+
+.offset-6 {
+  margin-left: 50%;
+}
+
+.offset-7 {
+  margin-left: 58.33333333%;
+}
+
+.offset-8 {
+  margin-left: 66.66666667%;
+}
+
+.offset-9 {
+  margin-left: 75%;
+}
+
+.offset-10 {
+  margin-left: 83.33333333%;
+}
+
+.offset-11 {
+  margin-left: 91.66666667%;
+}
+
+
+
+
+@mixin generate-columns($breakpoint) {
+  .col-#{$breakpoint}-auto {
+    flex: 0 0 auto;
+    width: auto;
+  }
+
+  @for $i from 1 through 12 {
+    .col-#{$breakpoint}-#{$i} {
+      flex: 0 0 auto;
+      width: percentage($i / 12);
+    }
+  }
+
+  @for $i from 0 through 11 {
+    .offset-#{$breakpoint}-#{$i} {
+      margin-left: percentage($i / 12);
+    }
+  }
+}
+
+
+@each $breakpoint, $size in $breakpoints {
+  @media (min-width: $size) {
+    @include generate-columns($breakpoint);
+  }
+}
